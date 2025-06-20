@@ -15,6 +15,7 @@ import org.springframework.util.FileSystemUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.samryder.channel_OCR_model.config.StorageException;
+import com.samryder.channel_OCR_model.config.StorageFileNotFoundException;
 import com.samryder.channel_OCR_model.config.StorageProperties;
 
 @Service
@@ -91,10 +92,15 @@ class StorageServiceImpl implements StorageService{
 //	public Resource loadAsResources(String filename) {
 //		try {
 //			Path file = load(filename);
-//			Resource resource = new UrlResource(files.toUri());
-//			
+//			Resource resource = new UrlResource(files.toUri());	
+//			if (resource.exists() || resource.isReadable()) {
+//				return resource;
+//			}
+//			else {
+//				throw new StorageFileNotFoundException("Could not read file:"+filename);
+//			}
 //		}
-//		
+		
 //	}
 
 	@Override
